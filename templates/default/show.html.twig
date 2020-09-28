@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello !{% endblock %}
+
+{% block body %}
+    {% include 'navbar.html.twig' %}
+
+    <div class="container mt-4">
+        <h3 class="mb-3">Na traženi datum slobodne su iduće sobe :</h3>
+        <div class="row">
+
+            {% for room in rooms %}
+
+                <div class="col-3 mr-3">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="/images/thumbnails/{{ room.thumbnail }}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ room.title }}</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="{{ path('proceedToBasket', {'roomId': room.id, 'dateFirst':dateFirst, 'dateSecond': dateSecond}) }}" class="btn btn-primary">Odaberi</a>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
